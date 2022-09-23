@@ -1,3 +1,11 @@
 * bookbook
 
 Things I want to read
+
+* todo
+- [ ] log interceptor
+- [ ] fix the build process
+- [ ] data store
+- [ ] local embedded data store config
+- [ ] acceptance testing
+- [ ] secret management
