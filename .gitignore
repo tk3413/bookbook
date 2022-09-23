@@ -4,9 +4,17 @@
 # Compiled class file
 *.class
 target/*
+.classpath
+.factorypath
+.mvn/*
+.project
+.settings/
+mvnw
+mvnw.cmd
 
 # Log file
 *.log
+logs/*
 
 # BlueJ files
 *.ctxt
