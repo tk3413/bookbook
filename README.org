@@ -9,3 +9,6 @@ Things I want to read
 - [ ] local embedded data store config
 - [ ] acceptance testing
 - [ ] secret management
+- [ ] ssl [[https://www.thomasvitale.com/https-spring-boot-ssl-certificate/][tutorial]]
+- [ ] unit test coverage report
+- [ ] unit testing [[https://howtodoinjava.com/spring-boot2/testing/rest-controller-unit-test-example/][tutorial]]

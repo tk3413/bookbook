@@ -16,4 +16,5 @@ public class Library {
     boolean favorite;
     String addedTimeStamp;
     String readTimeStamp;
+    Author author;
 }
