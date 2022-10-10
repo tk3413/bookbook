@@ -2,14 +2,15 @@ package com.taimorekhan.bookbook.models;
 
 import java.util.UUID;
 import java.util.List;
+
 import lombok.Data;
 
 @Data
 public class Library {
     UUID id;
     String title;
-    String type;
-    String status;
+    ItemType type;
+    ItemStatus status;
     List<String> categories;
     String link;
     int rating;
@@ -17,17 +18,4 @@ public class Library {
     String addedTimeStamp;
     String readTimeStamp;
     Author author;
-}
-
-enum type {
-    REFERENCE,
-    BOOK,
-    ARTICLE,
-    SOURCE
-}
-
-enum status {
-    STARTED,
-    COMPLETED,
-    NOT_STARTED
 }

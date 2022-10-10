@@ -25,24 +25,16 @@ public class Postgres {
 
     String DATABASE_NAME = "bookbook";
 
-    @Autowired(required=false)
+    @Autowired(required = false)
     EmbeddedPostgres embeddedPostgres;
 
     @Bean
     public DataSource postgresDatasource() {
-        DataSourceBuilder<?> dataSourceBuilder = DataSourceBuilder.create();
-        dataSourceBuilder.driverClassName("org.postgresql.Driver");
-        dataSourceBuilder.url(createUri());
-        dataSourceBuilder.username(userName);
-        dataSourceBuilder.password(password);
-        return dataSourceBuilder.build();
+        return DataSourceBuilder.create()
+                .driverClassName("org.postgresql.Driver")
+                .url(url)
+                .username(userName)
+                .password(password)
+                .build();
     }
-
-    private String createUri() {
-        if (embeddedPostgres != null) {
-            port = String.valueOf(embeddedPostgres.getMappedPort());
-        }
-        return url + ":" + port + "/" + DATABASE_NAME;
-    }
-
 }

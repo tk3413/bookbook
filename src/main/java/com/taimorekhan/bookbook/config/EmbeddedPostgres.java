@@ -67,7 +67,8 @@ public class EmbeddedPostgres {
                     .password("password")
                     .build()
                     .getConnection()
-                    .prepareStatement("create table if not exists library (id int PRIMARY KEY)")
+                    .prepareStatement("create table if not exists library" + 
+                    "(id uuid PRIMARY KEY, firstName varchar(500), lastName varchar(500))")
                     .executeQuery()
                     .close();
         } catch (SQLException e) {
