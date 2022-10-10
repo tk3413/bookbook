@@ -18,3 +18,16 @@ public class Library {
     String readTimeStamp;
     Author author;
 }
+
+enum type {
+    REFERENCE,
+    BOOK,
+    ARTICLE,
+    SOURCE
+}
+
+enum status {
+    STARTED,
+    COMPLETED,
+    NOT_STARTED
+}

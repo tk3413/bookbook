@@ -2,7 +2,7 @@ APPNAME=bookbook
 TAG=latest
 
 build:
-	mvn clean install
+	mvn clean install -Dspring.profiles.active=local
 
 build-remote:
 	docker run -it --rm --name mvnbuild \
