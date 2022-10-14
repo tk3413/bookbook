@@ -30,9 +30,13 @@ public class Postgres {
 
     @Bean
     public DataSource postgresDatasource() {
+        if (embeddedPostgres != null) {
+            port = String.valueOf(embeddedPostgres.getMappedPort());
+        }
+
         return DataSourceBuilder.create()
                 .driverClassName("org.postgresql.Driver")
-                .url(url)
+                .url(url + ":" + port + "/" + DATABASE_NAME)
                 .username(userName)
                 .password(password)
                 .build();
