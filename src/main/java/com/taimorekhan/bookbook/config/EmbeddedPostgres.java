@@ -1,5 +1,6 @@
 package com.taimorekhan.bookbook.config;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Map;
 
@@ -26,6 +27,24 @@ public class EmbeddedPostgres {
     private int mappedPort;
 
     Logger logger = LoggerFactory.getLogger(this.getClass().getName());
+
+    Connection conn;
+
+    private Connection getConnection(String url) {
+        try {
+            return DataSourceBuilder.create()
+                    .driverClassName("org.postgresql.Driver")
+                    .url(url)
+                    .username("localUser")
+                    .password("password")
+                    .build()
+                    .getConnection();
+        } catch (SQLException e) {
+            logger.error("Unable to establish connection to embedded database");
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     private Map<String, String> setupPostgresEnv() {
         Map<String, String> postgresEnv = ImmutableMap.of(
@@ -60,15 +79,9 @@ public class EmbeddedPostgres {
     private void setupTable() {
         String url = "jdbc:postgresql://localhost:" + this.mappedPort + "/bookbook";
         try {
-            DataSourceBuilder.create()
-                    .driverClassName("org.postgresql.Driver")
-                    .url(url)
-                    .username("localUser")
-                    .password("password")
-                    .build()
-                    .getConnection()
-                    .prepareStatement("create table if not exists authors" + 
-                    "(id uuid PRIMARY KEY, firstName varchar(500), lastName varchar(500))")
+            conn = getConnection(url);
+            conn.prepareStatement("create table if not exists authors" +
+                    "(id int PRIMARY KEY, firstName varchar(500), lastName varchar(500))")
                     .executeQuery()
                     .close();
         } catch (SQLException e) {
@@ -78,5 +91,16 @@ public class EmbeddedPostgres {
     }
 
     private void seedData() {
+        String url = "jdbc:postgresql://localhost:" + this.mappedPort + "/bookbook";
+        try {
+            conn = getConnection(url);
+            conn.prepareStatement("insert into authors" +
+                    "(id, firstName, lastName) values (1, 'taimore', 'khan')")
+                    .executeQuery()
+                    .close();
+        } catch (SQLException e) {
+            logger.error("error initializing tables for embedded db");
+            e.printStackTrace();
+        }
     }
 }

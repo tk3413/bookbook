@@ -15,6 +15,6 @@ public class AuthorRepositoryTest {
 
     @Test
     public void testGetAllAuthors() {
-        assert (0 == authorRepository.getAllAuthors().size());
+        assert (1 == authorRepository.getAllAuthors().size());
     }
 }

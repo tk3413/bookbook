@@ -1,5 +1,6 @@
 package com.taimorekhan.bookbook.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.taimorekhan.bookbook.models.Author;
@@ -19,8 +20,11 @@ public class AuthorController {
 
 	@GetMapping("/author")
 	public ResponseEntity<List<Author>> getAuthors() {
+		Author testAuthor = Author.builder().build();
+		List<Author> authorList = new ArrayList<Author>();
+		authorList.add(testAuthor);
 		logger.info("got a request for all authors");
-		return new ResponseEntity<List<Author>>(HttpStatus.OK);
+		return ResponseEntity.ok(authorList);
 	}
 
 	@PutMapping("/author")

@@ -2,11 +2,14 @@ package com.taimorekhan.bookbook.controllers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import com.taimorekhan.bookbook.models.Author;
 
@@ -18,7 +21,9 @@ public class AuthorControllerTest {
 
     @Test
     public void getAllAuthorsTest() {
-        assertEquals(HttpStatus.OK, authorController.getAuthors().getStatusCode());
+        ResponseEntity<List<Author>> allAuthors = authorController.getAuthors();
+        assertEquals(HttpStatus.OK, allAuthors.getStatusCode());
+        assertEquals(1, allAuthors.getBody().size());
     }
 
     @Test
