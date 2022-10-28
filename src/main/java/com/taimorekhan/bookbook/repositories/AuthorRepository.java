@@ -33,8 +33,7 @@ public class AuthorRepository implements AuthorRepositoryInterface {
                         .lastName(resultset.getString("lastName")).build());
             }
         } catch (SQLException e) {
-            logger.error("failed to retrieve author list from database");
-            e.printStackTrace();
+            logger.error("failed to retrieve author list from database due to {}");
         }
         return authors;
     }

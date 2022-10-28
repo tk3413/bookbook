@@ -2,13 +2,6 @@ APPNAME=bookbook
 TAG=latest
 
 build:
-	mvn clean install -Dspring.profiles.active=local
-
-build-remote:
-	docker run -it --rm --name mvnbuild \
-	-v $(shell pwd):/usr/src/bookbook \
-	-w /usr/src/bookbook \
-	maven:3.8.6-jdk-11 \
 	mvn clean install
 
 build-image:

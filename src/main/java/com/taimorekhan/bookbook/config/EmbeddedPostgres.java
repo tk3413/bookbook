@@ -85,8 +85,7 @@ public class EmbeddedPostgres {
                     .executeQuery()
                     .close();
         } catch (SQLException e) {
-            logger.error("error initializing tables for embedded db");
-            e.printStackTrace();
+            logger.warn("error initializing tables for embedded db - can ignore");
         }
     }
 
@@ -99,8 +98,7 @@ public class EmbeddedPostgres {
                     .executeQuery()
                     .close();
         } catch (SQLException e) {
-            logger.error("error initializing tables for embedded db");
-            e.printStackTrace();
+            logger.warn("error seeding tables for embedded db - can ignore");
         }
     }
 }

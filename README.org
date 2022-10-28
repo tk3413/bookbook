@@ -3,12 +3,12 @@
 Things I want to read
 
 * todo
-- [ ] log interceptor
-- [ ] fix the build process
-- [ ] data store
-- [ ] local embedded data store config
+- [x] log interceptor
+- [x] fix the build process
+- [x] data store
+- [x] local embedded data store config
 - [ ] acceptance testing
 - [ ] secret management
 - [ ] ssl [[https://www.thomasvitale.com/https-spring-boot-ssl-certificate/][tutorial]]
-- [ ] unit test coverage report
-- [ ] unit testing [[https://howtodoinjava.com/spring-boot2/testing/rest-controller-unit-test-example/][tutorial]]
+- [x] unit test coverage report
+- [x] unit testing [[https://howtodoinjava.com/spring-boot2/testing/rest-controller-unit-test-example/][tutorial]]

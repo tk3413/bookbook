@@ -23,7 +23,9 @@ public class AuthorControllerTest {
     public void getAllAuthorsTest() {
         ResponseEntity<List<Author>> allAuthors = authorController.getAuthors();
         assertEquals(HttpStatus.OK, allAuthors.getStatusCode());
-        assertEquals(1, allAuthors.getBody().size());
+        if (allAuthors.getBody() != null) {
+            assertEquals(1, allAuthors.getBody().size());
+        }
     }
 
     @Test
